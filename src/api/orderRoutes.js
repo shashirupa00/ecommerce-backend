@@ -1,6 +1,6 @@
 const express = require('express');
 const { Decimal128, ObjectId } = require('mongodb');
-const { connectToDatabase } = require('../../db');
+const { connectToDatabase } = require('../db/db.js');
 
 const router = express.Router();
 
