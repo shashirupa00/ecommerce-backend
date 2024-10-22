@@ -6,7 +6,7 @@ const {
 
 const uri =
   process.env.MONGODB_URI ||
-  'mongodb+srv://shashirupa00:qwerty12345@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority';
+  'mongodb+srv://shashishirupa00:qwerty12345@cluster0.nyogk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 const client = new MongoClient(uri);
 
 async function startOrderListener() {
@@ -32,12 +32,12 @@ async function startOrderListener() {
             version: 1,
             input: {
               orderId: newOrder._id.toString(),
-              apiUrl: 'http://127.0.0.1:3001',
+              apiUrl: 'https://ecommerce-backend-b0af.onrender.com/',
             },
           };
           const workflowId =
-            await conductorClient.workflowResource.startWorkflow(request);
-          console.log('Workflow started for order:', workflowId);
+            await conductorClient.workflowResource.startWorkflow(request); // Await the Promise
+          console.log('Workflow started for order:', workflowId); // This will print the actual workflow ID when resolved
         } catch (error) {
           console.error('Error starting workflow:', error);
         }
@@ -53,5 +53,3 @@ async function startOrderListener() {
 startOrderListener();
 
 module.exports = { startOrderListener };
-
-// mongodb+srv://shashishirupa00:qwerty12345@cluster0.nyogk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

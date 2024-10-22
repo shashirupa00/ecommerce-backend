@@ -96,8 +96,6 @@ router.post('/:id/process-payment', async (req, res) => {
   try {
     const { id } = req.params;
     const { amount } = req.body;
-    // Implement your payment processing logic here
-    // For this example, we'll just simulate a successful payment
     res.json({
       status: 'success',
       message: `Payment of ${amount} processed for order ${id}`,
